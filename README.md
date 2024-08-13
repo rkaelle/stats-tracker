@@ -20,6 +20,17 @@ This is a React-based web application that allows users to manage their skills a
 - **User Authentication**: Secure authentication using Firebase Auth, with protected routes.
 - **Responsive Design**: The app is fully responsive and works across different screen sizes.
 
+## Screenshots
+
+### Login Page
+![Login Page](public/loginpage.png)
+
+### App Page
+![App Page](public/apppage.png)
+
+### Home Page
+![Home Page](public/homepage.png)
+
 ## Installation
 
 1. **Clone the repository:**
