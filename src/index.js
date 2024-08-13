@@ -1,17 +1,30 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import SkillsPage from './components/SkillsPage';
+import { AuthProvider } from './AuthContext';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Login from './components/Login';
+import Signup from './components/Signup';
+import PrivateRoute from './components/PrivateRoute';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+ReactDOM.render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/" element={<SkillsPage />} />
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+          {/* Protect the /app route with PrivateRoute */}
+          <Route element={<PrivateRoute />}>
+            <Route path="/app" element={<App />} />
+          </Route>
+        </Routes>
+      </Router>
+    </AuthProvider>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
